@@ -1,0 +1,22 @@
+<!--pages/search/search.wxml-->
+<view class="search_row">
+  <input placeholder="输入要搜索的商品" bindinput="hanleInput" value="{{query}}"></input>
+  <view class="search" bindtap="handleSearch">搜索</view>
+</view>
+<view class="history"  wx:if="{{haveHistory}}">
+  <view class="history_title">搜索历史：</view>
+  <view class="search_history">
+    <view class="history_item"
+    wx:for="{{searchHistory}}"
+    wx:key="searchHistory"
+    bindtap="handleTapHistory"
+    data-data="{{item}}"
+    >
+      {{item}}
+    </view>
+  </view>
+  <view class="delete_history" bindtap="handleDeleteHistory">
+    <view class="iconfont icon-lajitong"></view>
+    清空搜索历史
+  </view>
+</view>

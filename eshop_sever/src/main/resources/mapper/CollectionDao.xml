@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.CollectionDao">
+    <select id="getAllCollectionRecordsOfUser"
+            parameterType="string"
+            resultType="com.czaeshop.pojo.VisitedItemOrCollectionItem">
+        select a.*,b.`productName`,b.`price`,b.`coverImg` from `t_collection` as a, `t_product` as b
+        where a.`userId` = #{userId} and a.`productId` = b.`productId`
+    </select>
+
+    <insert id="insertOneCollectionRecord">
+        insert into `t_collection` (`userId`,`productId`) values (#{userId}, #{productId})
+    </insert>
+
+    <delete id="deleteOneCollectionRecord">
+        delete from `t_collection` where `itemId` = #{itemId}
+    </delete>
+
+    <select id="getCollectionItemId" resultType="Integer">
+        select `itemId` from `t_collection` where `productId` = #{productId} and `userId` = #{userId}
+    </select>
+
+    <delete id="unCollectProduct">
+        delete from `t_collection` where `userId` = #{userId} and `productId` = #{productId}
+    </delete>
+</mapper>

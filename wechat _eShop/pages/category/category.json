@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "SearchInput" : "../../Components/SearchInput/SearchInput"
+  },
+  "navigationBarTitleText": "分类"
+}

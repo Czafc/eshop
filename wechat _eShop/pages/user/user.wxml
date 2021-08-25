@@ -1,0 +1,69 @@
+<!--pages/user/user.wxml-->
+<view class="user_info_wrap">
+  <view class="user_img_wrap" wx:if="{{hasUserInfo}}">
+    <image class="user_bg" src = "{{userInfo.avatarUrl}}"></image>
+    <view class="user_info">
+      <image class="user_icon" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user_name">{{userInfo.nickName}}</view>
+    </view>
+  </view>
+  <navigator class="user_btn" url="/pages/login/login" wx:else>登录</navigator>
+</view>
+
+<view class="user_content">
+  <view class="user_main">
+    <view class="history_wrap">
+      <navigator url="/pages/collection/collection?type=0">
+        <view class="his_name">收藏的店铺</view>
+      </navigator>
+      <view class = "boundary">|</view>
+      <navigator url="/pages/collection/collection?type=1">
+        <view class="his_name">收藏的商品</view>
+      </navigator>
+      <view class = "boundary">|</view>
+      <navigator url="/pages/collection/collection?type=2">
+        <view class="his_name">关注的商品</view>
+      </navigator>
+      <view class = "boundary">|</view>
+      <navigator url="/pages/collection/collection?type=3">
+        <view class="his_name">我的足迹</view>
+      </navigator>
+    </view>
+
+    <view class="orders_wrap">
+      <view class="order_title">我的订单</view>
+      <view class="order_content">
+        <navigator url="/pages/order/order?type=-1">
+          <view class="iconfont icon-quanbudingdan"></view>
+          <view class="order_name">全部订单</view>
+        </navigator>
+        <navigator url="/pages/order/order?type=0">
+          <view class="iconfont icon-daifukuan"></view>
+          <view class="order_name">待付款</view>
+        </navigator>
+        <navigator url="/pages/order/order?type=1">
+          <view class="iconfont icon-daishouhuo"></view>
+          <view class="order_name">待收货</view>
+        </navigator>
+        <navigator url="/pages/order/order?type=2">
+          <view class="iconfont icon-tuihuo"></view>
+          <view class="order_name">退款/退货</view>
+        </navigator>
+      </view>
+    </view>
+    <view class="address_wrap">收货地址管理</view>
+
+    <view class="app_info_wrap">
+      <view class="app_info_item app_info_contact">
+        <text>联系客服</text>
+        <text>15543512927</text>
+      </view>
+      <view class="app_info_item">意见反馈</view>
+      <view class="app_info_item">关于我们</view>
+    </view>
+
+    <view class="recommend_wrap">
+      把应用推荐给其他人
+    </view>
+  </view>
+</view>

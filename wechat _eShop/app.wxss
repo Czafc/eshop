@@ -1,0 +1,14 @@
+/**app.wxss**/
+@import "./style/icon.wxss";
+/*主题颜色*/
+page{
+  --themeColor : #4DB948
+}
+
+navigator{
+  box-sizing: border-box;
+}
+
+image{
+  width:100%;
+}

@@ -1,0 +1,53 @@
+/* pages/search/search.wxss */
+page{
+  background-color: #dedede;
+  padding: 20rpx;
+}
+
+.search_row {
+  height: 80rpx;
+  display: flex;
+}
+.search_row input {
+  border-radius: 5%;
+  background-color: #fff;
+  flex: 1;
+  height: 100%;
+  padding-left: 30rpx;
+}
+.search_row .search {
+  border-radius: 10%;
+  background-color:#eee;
+  width: 150rpx !important;
+  height: 100%;
+  font-size: 28rpx;
+  margin: 0 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.history .history_title{
+  padding:10rpx;
+  color:#333;
+}
+
+.history .search_history .history_item{
+  background-color: #fff;
+  font-size: 26rpx;
+  padding: 15rpx 10rpx;
+  border-bottom: 1rpx solid #ccc;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.history .delete_history{
+  padding-top: 15rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  background-color: #dedede;
+  color:#555;
+}

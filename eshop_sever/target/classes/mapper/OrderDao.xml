@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.OrderDao">
+    <insert id="creatAnOrder">
+        insert into `t_orders`
+        (`orderId`,`userId`,`orderStatus`,`totalProductNum`, `totalPrice`,`consignee`,
+        `address`,`telephoneNum`,`createTime`)
+        values
+        (#{orderId}, #{userId}, 0, #{totalProductNum}, #{totalPrice},#{consignee},
+        #{address}, #{telephoneNum}, #{createTime})
+    </insert>
+
+    <insert id="insertItemOfOrder">
+        insert into `t_order_items` (`orderId`, `productId`, `productNum`)
+        values(#{orderId}, #{productId}, #{productNum})
+    </insert>
+
+    <update id="confirmPay" parameterType="string">
+        update `t_orders` set `orderStatus` = 1 where `orderId` = #{orderId}
+    </update>
+
+    <select id="getOrderListOfUserByStatus" resultType="com.czaeshop.pojo.Order">
+        select * from `t_orders` where `userId`=#{userId} and `orderStatus`=#{orderStatus}
+    </select>
+
+    <select id="getAllOrdersOfUser" resultType="com.czaeshop.pojo.Order">
+        select * from `t_orders` where `userId` = #{userId}
+    </select>
+
+    <select id="getOrderByOrderId" resultType="com.czaeshop.pojo.Order">
+        select * from `t_orders` where `orderId` = #{orderId}
+    </select>
+
+    <select id="getOrderItemsOfOrder" resultType="com.czaeshop.pojo.OrderItem">
+        select a.*,b.`productId`,b.`productName`,b.`price`, b.`coverImg`
+        from `t_order_items` as a , `t_product` as b where a.`orderId` = #{orderId} and a.`productId`=b.`productId`
+    </select>
+
+    <delete id="deleteOrderItems" parameterType="string">
+        delete from `t_order_items` where orderId = #{orderId}
+    </delete>
+
+    <delete id="deleteOrderRecord" parameterType="string">
+        delete from `t_orders` where orderId = #{orderId}
+    </delete>
+</mapper>

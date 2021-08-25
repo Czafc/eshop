@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.ProductDao">
+    <select id="queryProductListByCatId" resultType="com.czaeshop.pojo.Product">
+        select `productId`, `catId`, `productName`, `price`, `productNum`, `coverImg`, `sales`, `seller` from `t_product` where catId = #{catId} limit #{from},#{to}
+    </select>
+
+    <select id="queryProductListByCatIdSortByPrice" resultType="com.czaeshop.pojo.Product">
+        select `productId`, `catId`, `productName`, `price`, `productNum`, `coverImg`, `sales`, `seller`
+        from `t_product` where catId = #{catId} order by `price`
+        limit #{from},#{to}
+    </select>
+
+    <select id="queryProductListByCatIdSortBySaleNum" resultType="com.czaeshop.pojo.Product">
+        select `productId`, `catId`, `productName`, `price`, `productNum`, `coverImg`, `sales`, `seller`
+        from `t_product` where catId = #{catId} order by `sales` desc
+        limit #{from},#{to}
+    </select>
+
+    <select id="queryProductListByName" resultType="com.czaeshop.pojo.Product">
+        select `productId`, `catId`, `productName`, `price`, `productNum`, `coverImg`, `sales`, `seller` from `t_product` where `productName` like "%"#{name}"%" limit #{from},#{to}
+    </select>
+
+    <select id="queryProductListByNameSortByPrice" resultType="com.czaeshop.pojo.Product">
+        select `productId`, `catId`, `productName`, `price`, `productNum`, `coverImg`, `sales`, `seller` from `t_product`
+        where `productName` like "%"#{name}"%" order by `price`
+        limit #{from},#{to}
+    </select>
+
+    <select id="queryProductListByNameSortBySaleNum" resultType="com.czaeshop.pojo.Product">
+        select `productId`, `catId`, `productName`, `price`, `productNum`, `coverImg`, `sales`, `seller` from `t_product`
+        where `productName` like "%"#{name}"%" order by `sales` desc
+        limit #{from},#{to}
+    </select>
+
+    <select id="getProductNumByCatId" resultType="int" parameterType="int">
+        select count(productId) from `t_product` where catId = #{catId}
+    </select>
+
+    <select id="getProductNumByName" resultType="int" parameterType="string">
+        select count(productId) from `t_product` where `productName` like "%"#{name}"%"
+    </select>
+
+    <select id="queryProductByProductId" parameterType="int" resultType="com.czaeshop.pojo.Product">
+        select * from `t_product` where `productId` = #{productId}
+    </select>
+
+    <update id="updateSaleNum" parameterType="string">
+        update `t_product` set `sales` = `sales` + 1 where `productId` in
+        (select `productId` from `t_order_items` where `orderId` = #{orderId})
+    </update>
+</mapper>

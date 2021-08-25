@@ -1,0 +1,28 @@
+<!--pages/goods_list/goods_list.wxml-->
+<view class="goods_list">
+	<SearchInput></SearchInput>
+	<Tabs tabs="{{tabs}}" bindtabsItemChange = "handleTabsItemChange">
+		<view class="no_data" wx:if="{{hasNoData}}">
+			<image src="/pictures/nodata.png" mode="widthFix"></image>
+		</view>
+		<block wx:else>
+			<view class="first_tab">
+				<navigator class = "goods_item"
+				wx:for = "{{goodsList}}"
+				wx:key = "productId"
+				url = "/pages/goods_detail/goods_detail?productId={{item.productId}}"
+				>
+					<!--图片容器-->
+					<view class="goods_img_wrap">
+						<image mode="widthFix" src="{{item.coverImg}}"></image>
+					</view>
+					<!--商品容器-->
+					<view class="goods_info_wrap">
+						<view class="goods_name">{{item.productName}}</view>
+						<view class="goods_price">￥{{item.price}}</view>
+					</view>
+				</navigator>
+			</view>
+		</block>
+	</Tabs>
+</view>

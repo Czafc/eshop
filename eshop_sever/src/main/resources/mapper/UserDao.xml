@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.UserDao">
+    <select id="isUserExist" resultType="int" parameterType="string">
+        select count(`userId`) from `t_user` where `userId` = #{userId}
+    </select>
+
+    <select id="registNewUser" parameterType="string">
+        insert into `t_user` values(#{userId})
+    </select>
+</mapper>

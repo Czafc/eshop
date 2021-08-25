@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Tabs":"../../Components/Tabs/Tabs"
+  },
+  "navigationBarTitleText": "订单记录"
+}

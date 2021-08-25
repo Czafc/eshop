@@ -1,0 +1,60 @@
+<!--pages/cart/cart.wxml-->
+<!--收货地址-->
+<view class="recive_address_row">
+  <!--当收获地址不存在的时候 显示按钮 否则显示详细地址信息-->
+  <view class="address_btn" wx:if="{{!address.userName}}">
+    <button type = "primary" plain="true" bindtap="handleChooseAddress">添加收货地址</button>
+  </view>
+  <view wx:else bindtap="handleChooseAddress" class="user_info_row">
+    <view class="user_info">
+      <view>{{address.userName}}</view>
+      <view>{{address.all}}</view>
+      <view class = "tapToChangeAddress">点击收货地址来修改</view>
+    </view>
+    <view class="user_phone">{{address.telNumber}}</view>
+  </view>
+</view>
+
+<!--购物车商品内容-->
+<view class="cart_content">
+  <view class="cart_title">订单详情</view>
+  <view class="cart_main">
+      <view class="cart_item"
+      wx:for="{{cart}}"
+      wx:key="productId"
+      wx:for-index = "index"
+      wx:if = "{{item.changed != 2}}"
+      >
+        <navigator class="cart_img_wrap" url="/pages/goods_detail/goods_detail?productId={{item.productId}}">
+          <image mode="widthFix" src="{{item.coverImg}}"></image>
+        </navigator>
+        <view class="cart_info_wrap">
+          <view class="goods_name">{{item.productName}}</view>
+          <view class="goods_price_wrap">
+            <view class="goods_price">￥{{item.price}}</view>
+            <view class="cart_num_tool">
+              <view class="goods_num">X{{item.productNum}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+  </view>
+</view>
+
+<!--底部工具栏-->
+<view class="foot_tool">
+  <view class="total_price_wrap">
+    <view class="total_price">
+      合计：<text class="total_price_text">￥{{totalPrice}}</text>
+    </view>
+    <view>包含运费</view>
+  </view>
+  <view class="order_pay_wrap" bindtap="handlePay">
+    支付({{totalNum}})
+  </view>
+</view>
+
+<!--支付二维码--> 
+<modal title='扫描二维码以完成支付' hidden="{{modalHidden}}" bindcancel="payCancel" bindconfirm='payConfirm' confirm-text="支付">
+  <image mode="widthFix" src="../../pictures/QRcode.png"></image>
+</modal>

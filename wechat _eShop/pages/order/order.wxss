@@ -1,0 +1,30 @@
+.order_main .order_item {
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+  color: #666;
+  font-size: 30rpx;
+}
+.order_main .order_item .order_no_row {
+  display: flex;
+  padding: 10rpx 0;
+  justify-content: space-between;
+}
+.order_main .order_item .order_no_row .order_no_value {
+  color: var(--themeColor);
+}
+.order_main .order_item .order_price_row {
+  display: flex;
+  padding: 10rpx 0;
+  justify-content: space-between;
+}
+.order_main .order_item .order_price_row .order_price_value {
+  color: var(--themeColor);
+}
+.order_main .order_item .order_time_row {
+  display: flex;
+  padding: 10rpx 0;
+  justify-content: space-between;
+}
+.order_main .order_item .order_time_row .order_time_value {
+  color: var(--themeColor);
+}

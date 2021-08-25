@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.VisitedDao">
+    <select id="getAllVisitedRecordsOfUser"
+            parameterType="string"
+            resultType="com.czaeshop.pojo.VisitedItemOrCollectionItem">
+        select a.*,b.`productName`,b.`price`,b.`coverImg` from `t_visited` as a, `t_product` as b
+        where a.`userId` = #{userId} and a.`productId` = b.`productId`
+    </select>
+
+    <insert id="insertOneVisitedRecord">
+        insert into `t_visited` (`userId`,`productId`) values (#{userId}, #{productId})
+    </insert>
+
+    <delete id="deleteOneVisitedRecord">
+        delete from `t_visited` where `itemId` = #{itemId}
+    </delete>
+
+    <delete id="clearVisitedHistory" parameterType="string">
+        delete from `t_visited` where `userId` = #{userId}
+    </delete>
+</mapper>

@@ -1,0 +1,27 @@
+<!--pages/order/order.wxml-->
+<Tabs tabs="{{tabs}}" bindtabsItemChange="handleTabsItemChange">
+  <view class="order_main">
+    <view
+    wx:for="{{orders}}"
+    wx:key="orderId"
+    class="order_item"
+    bindtap="handleTapOrder"
+    data-orderId="{{item.orderId}}"
+    bindlongpress="delOrderInfo"
+    >
+    <!--长按删除-->
+      <view class="order_no_row">
+        <view class="order_no_text">订单编号</view>
+        <view class="order_no_value">{{item.orderId}}</view>
+      </view>
+      <view class="order_price_row">
+        <view class="order_price_text">订单总价</view>
+        <view class="order_price_value">￥{{item.totalPrice}}</view>
+      </view>
+      <view class="order_time_row">
+        <view class="order_time_text">创建日期</view>
+        <view class="order_time_value">{{item.createTime}}</view>
+      </view>
+    </view>
+  </view>
+</Tabs>

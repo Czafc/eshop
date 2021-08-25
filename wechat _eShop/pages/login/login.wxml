@@ -1,0 +1,5 @@
+<!--pages/login/login.wxml-->
+<view class="login">
+  <button class="login_btn" type = "primary" plain="true" bindtap="handleGetUserProfile">登录</button>
+</view>
+

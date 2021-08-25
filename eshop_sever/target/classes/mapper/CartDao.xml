@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.CartDao">
+    <select id="findRow" resultType="int">
+        select count(cartId) from `t_cart` where `userId`= #{userId} and `productId` = #{productId}
+    </select>
+
+    <insert id="insertRowToCart">
+        insert into `t_cart` (`userId`, `productId`, `productNum`) values(#{userId}, #{productId}, #{num})
+    </insert>
+
+    <update id="addProductNumOfCart">
+        update `t_cart` set `productNum` = `productNum`+ #{num} where `userId`= #{userId} and `productId` = #{productId}
+    </update>
+
+    <select id="getCartOfUser" resultType="com.czaeshop.pojo.CartItem" parameterType="string">
+        select `cartId`, `userId`, `t_cart`.`productId`, `t_cart`.`productNum`, `price`, `productName`, `coverImg`
+        from `t_cart` , `t_product`
+        where `userId` = #{userId} and `t_cart`.`productId` = `t_product`.`productId`
+    </select>
+
+    <update id="updateCart">
+        update `t_cart` set `productNum` = #{productNum} where `cartId` = #{cartId}
+    </update>
+
+    <delete id="deleteRowFromCart">
+        delete from `t_cart` where `cartId` = #{cartId}
+    </delete>
+</mapper>

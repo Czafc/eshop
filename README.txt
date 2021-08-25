@@ -1,0 +1,3 @@
+eshop_sever为服务端，基于SSM框架；
+wechat_eShop为微信小程序前端，建议使用微信开发者工具打开
+e_shop.sql为数据库的结构和数据

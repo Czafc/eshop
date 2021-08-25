@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czaeshop.dao.CategoryDao">
+    <select id="getCategoriesOfLevel0" resultType="com.czaeshop.pojo.Category">
+        select * from `t_category` where catLevel = 0 and catDeleted = 0
+    </select>
+    <select id="getCategoriesByParentId" resultType="com.czaeshop.pojo.Category" parameterType="int">
+        select * from `t_category` where catPid = #{pid} and catDeleted = 0
+    </select>
+</mapper>
